@@ -25,28 +25,11 @@ public class Main extends Application {
         yAxis.setLabel("количество операций");
         //creating the chart
         final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
+                new LineChart<>(xAxis,yAxis);
 
         lineChart.setTitle("Сравнение скорости сортировок");
         //defining a series
-        XYChart.Series series = setSeries(data);
-        //series.setName("My portfolio");
-        //populating the series with data
-        /*
-        series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        series.getData().add(new XYChart.Data(3, 15));
-        series.getData().add(new XYChart.Data(4, 24));
-        series.getData().add(new XYChart.Data(5, 34));
-        series.getData().add(new XYChart.Data(6, 36));
-        series.getData().add(new XYChart.Data(7, 22));
-        series.getData().add(new XYChart.Data(8, 45));
-        series.getData().add(new XYChart.Data(9, 43));
-        series.getData().add(new XYChart.Data(10, 17));
-        series.getData().add(new XYChart.Data(11, 29));
-        series.getData().add(new XYChart.Data(12, 25));
-        */
-
+        XYChart.Series<Number,Number> series = setSeries(data);
         Scene scene  = new Scene(lineChart,800,600);
         lineChart.getData().add(series);
 
@@ -54,8 +37,8 @@ public class Main extends Application {
         stage.show();
     }
 
-    public XYChart.Series setSeries(List<Pair<Integer>> data){
-        XYChart.Series series = new XYChart.Series();
+    public XYChart.Series<Number,Number> setSeries(List<Pair<Integer>> data){
+        XYChart.Series<Number,Number> series = new XYChart.Series();
         for (Pair c: data){
             series.getData().add(new XYChart.Data(c.getX(), c.getY()));
         }
