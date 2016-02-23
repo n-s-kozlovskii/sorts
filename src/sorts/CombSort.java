@@ -15,6 +15,7 @@ public class CombSort implements Sort {
         for (int i=0; i<10;++i){
             x.add(new Pair<>(i, i*i));
         }
+        //new data
         return x;
     }
 }
