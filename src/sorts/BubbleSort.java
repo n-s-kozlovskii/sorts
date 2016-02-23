@@ -13,7 +13,6 @@ public class BubbleSort implements Sort {
     public List<Pair<Integer>> getData() {
         List<Pair<Integer>> x = new ArrayList<>();
         x.add(new Pair<>(2, 14));
-
         x.add(new Pair<>(3, 15));
         x.add(new Pair<>(4, 24));
         x.add(new Pair<>(5, 34));

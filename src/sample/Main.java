@@ -7,6 +7,7 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import my_pairs.*;
 import sorts.BubbleSort;
+import sorts.CombSort;
 import sorts.Sort;
 
 import java.util.List;
@@ -14,7 +15,10 @@ import java.util.List;
 
 public class Main extends Application {
 
-    private static List<Pair<Integer>> data;
+    private static List<Pair<Integer>> orderSortData;
+    private static List<Pair<Integer>> improvedSortData;
+
+
 
     @Override public void start(Stage stage) {
         stage.setTitle("Line Chart Sample");
@@ -28,10 +32,11 @@ public class Main extends Application {
                 new LineChart<>(xAxis,yAxis);
 
         lineChart.setTitle("Сравнение скорости сортировок");
-        //defining a series
-        XYChart.Series<Number,Number> series = setSeries(data);
+        //defining a ordinalSortSeries
+        XYChart.Series<Number,Number> ordinalSortSeries = setSeries(orderSortData);
+        XYChart.Series<Number,Number> improvedSortSeries = setSeries(improvedSortData);
         Scene scene  = new Scene(lineChart,800,600);
-        lineChart.getData().add(series);
+        lineChart.getData().addAll(ordinalSortSeries, improvedSortSeries);
 
         stage.setScene(scene);
         stage.show();
@@ -48,7 +53,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Sort x = new BubbleSort();
-        data = x.getData();
+        Sort y = new CombSort();
+        orderSortData = x.getData();
+        improvedSortData = y.getData();
         launch(args);
     }
 }
